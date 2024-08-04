@@ -13,7 +13,7 @@ func NewSampleController(r fiber.Router, sampleUse entities.SampleUseCase) {
 	controllers := &SampleController{
 		SampleUseCase: sampleUse,
 	}
-	r.Post(
+	r.Get(
 		"/",
 		controllers.GetSample,
 	)
