@@ -2,7 +2,10 @@ package configs
 
 import (
 	"fmt"
+	"log"
 	"os"
+
+	"github.com/joho/godotenv"
 )
 
 type Configs struct {
@@ -15,6 +18,12 @@ type Fiber struct {
 }
 
 func LoadConfig() (*Configs, error) {
+
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
+
 	config := Configs{}
 
 	fiberPort := os.Getenv("FIBER_PORT")
